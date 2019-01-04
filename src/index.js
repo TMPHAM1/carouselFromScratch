@@ -1,12 +1,19 @@
+import '../styles.scss'
+import captionArray from '../data/captions.js'
 $(document).ready(InitializeApp)
-var currentSlideNumber = 0;
+let currentSlideNumber = 0;
 
 function InitializeApp() {
     applyClickHandlers() // This applies click handlers to the next and prev buttons
     setInterval(nextSlide, 5000)
     createDots();
+    setTitleAndCaption();
 }
 
+function setTitleAndCaption(currentSlideNumber=0) {
+    $(".title").text(captionArray[currentSlideNumber]["title"]);
+    $(".caption").text(captionArray[currentSlideNumber]["caption"]);
+}
 function applyClickHandlers() {
     $(".next").click(nextSlide);
     $(".previous").click(previousSlide);
@@ -27,34 +34,39 @@ function createDots() {
 }
 function nextSlide() {
     var slidesTotal = $("div.slide").length
+    console.log(slidesTotal)
     $(".dots").removeClass("active");
     if (slidesTotal - 1 !== currentSlideNumber) { // IF the current slide is NOT on the last Slide 
-        var nextSlide = $("div.slide")[currentSlideNumber + 1]; // Set the Next Slide in the order to be shown
+        // var nextSlide = $("div.slide")[currentSlideNumber + 1]; // Set the Next Slide in the order to be shown
         currentSlideNumber = currentSlideNumber + 1; // Add To the Slide counter 
         $(`[key='${currentSlideNumber}']`).addClass("active");
+        $("div.slider").css("transform", `translateX( ${ -25 * currentSlideNumber}% )`);
     } 
     else { // IF the current slide is the last slide
         currentSlideNumber = 0; //Set Current Slide to Beginning
-        var nextSlide = $("div.slide")[currentSlideNumber]; // Set the Beginning Slide as the next slide to be shown
+        // var nextSlide = $("div.slide")[currentSlideNumber]; // Set the Beginning Slide as the next slide to be shown
         $(`[key='${currentSlideNumber}']`).addClass("active");
+        $("div.slider").css("transform", `translateX( ${currentSlideNumber}% )`);
     }
-    $("div.slide").removeClass("show");
-    $(nextSlide).addClass("show");
+    setTitleAndCaption(currentSlideNumber);
 }
 
 function previousSlide() { 
     var slidesTotal = $("div.slide").length;
     $(".dots").removeClass("active");
     if (currentSlideNumber !== 0) {
-        var previousSlide = $("div.slide")[currentSlideNumber-1];
+        // var previousSlide = $("div.slide")[currentSlideNumber-1];
         currentSlideNumber = currentSlideNumber - 1;
         $(`[key='${currentSlideNumber}']`).addClass("active");
+        $("div.slider").css("transform", `translateX( ${ -25 * currentSlideNumber}% )`);
     }
     else {
         currentSlideNumber = slidesTotal - 1
         var previousSlide = $("div.slide")[currentSlideNumber];
         $(`[key='${currentSlideNumber}']`).addClass("active");
+        $("div.slider").css("transform", `translateX( ${ -25 * currentSlideNumber}% )`);
     }
     $("div.slide").removeClass("show");
     $(previousSlide).addClass("show");
+    setTitleAndCaption(currentSlideNumber);
 }

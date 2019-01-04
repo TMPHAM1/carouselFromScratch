@@ -1,0 +1,38 @@
+{
+  "name": "carouselfromscratch",
+  "version": "1.0.0",
+  "description": "Builiding a carousel from scratch ",
+  "scripts": {
+    "dev": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TMPHAM1/carouselFromScratch.git"
+  },
+  "keywords": [
+    "carousel",
+    "javascript",
+    "scss",
+    "sass",
+    "jQuery"
+  ],
+  "author": "Tien Pham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TMPHAM1/carouselFromScratch/issues"
+  },
+  "homepage": "https://github.com/TMPHAM1/carouselFromScratch#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.1.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
+  }
+}
