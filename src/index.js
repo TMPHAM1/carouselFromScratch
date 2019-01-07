@@ -8,12 +8,29 @@ let slides ;
 let slidesTotal;
 let firstSlide;
 let lastSlide; 
+var callSetInterval;
+var startTimeLapse;
 
+function startInterval() {
+    callSetInterval = setInterval(nextSlide, 5000)
+    startTimeLapse = Date.now()
+  
+}
+function pauseInterval() {
+    console.log("in pause interval")
+    clearInterval(callSetInterval);
+}
 
+function restartInterval() {
+    console.log("in restart Interval")
+    const endTimeLapse = Date.now()
+    const totalTimeLapse = startTimeLapse - endTimeLapse; 
+    console.log(totalTimeLapse)
+}
 
 
 function InitializeApp() {
-    // setInterval(nextSlide, 5000)
+    startInterval();
     setTitleAndCaption();
     applyClickHandlers();
     slider = $('div.slider');
@@ -23,6 +40,7 @@ function InitializeApp() {
  lastSlide = slides.filter(':last');    
     firstSlide.before(lastSlide.clone(true));
     lastSlide.after(firstSlide.clone(true));
+    $("div.slider").onmouse
 }
 
 function setTitleAndCaption(currentSlideNumber=0) {
