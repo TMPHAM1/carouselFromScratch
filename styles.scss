@@ -3,6 +3,9 @@ $font-color: black;
 .active {
     opacity: 0.1;
 }
+.transition {
+    transition: .7s;
+}
 .carousel {
     left: 50%;
     top: 50%; 
@@ -31,14 +34,18 @@ $font-color: black;
     display: flex;
     flex-direction: row;
     width: 500%;
-    overflow: hidden;
+    transform: translateX(-20%); 
+ 
 }
 .slide {
     border: 3px solid green;
+    width: 100%;
     .slide-img {
+        margin: 0;
         max-width: 100%;
         max-height: 300px;
     }
+   
 }
 
 .controls {
@@ -57,4 +64,8 @@ $font-color: black;
         flex-direction: row;
         justify-content: space-evenly;
     }
+}
+
+@-webkit-keyframes slide {
+    100% { transform: translate(-20.5%)}
 }
